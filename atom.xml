@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://teisrobotics.github.io/"/>
-  <updated>2019-12-27T12:33:32.777Z</updated>
+  <updated>2019-12-28T13:05:19.932Z</updated>
   <id>https://teisrobotics.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Primeros controles</title>
+    <link href="https://teisrobotics.github.io/2019/12/28/primeroscontroles/"/>
+    <id>https://teisrobotics.github.io/2019/12/28/primeroscontroles/</id>
+    <published>2019-12-28T13:05:19.000Z</published>
+    <updated>2019-12-28T13:05:19.932Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Primeros-controles"><a href="#Primeros-controles" class="headerlink" title="Primeros controles"></a>Primeros controles</h2><p>En el <a href="https://www.teisrobotics.org/2019/12/24/Ventanas-en-Lazarus/" target="_blank" rel="noopener">post anterior</a> habíamos colocado un botón en nuestro formulario, y al pulsarlo “mágicamente” aparecía un mensaje en la pantalla.</p><p>Al colocar el botón u otro control en nuestro formulario veremos que este tiene una serie de propiedades y eventos.</p><a id="more"></a><p>Por propiedades se entiende “caracteristicas” del control, que podemos modificar o ajustar a nuestro gusto. Pueden ser proiedades que cambian su aspecto, o su comportamiento.</p><p>Los eventos son situaciones que ocurren en nuestro ordenador y que son nofiticados a nuestra aplicación. Por ejemplo, el evento Onclick se produce cuando se pulsa sobre un control con el botón del ratón. En ese momento el sistema operativo notifica a nuesta aplicación que se ha producido la pulsación del ratón sobre nuestro control. ¿Recuerdas este trozo de código en el post anterior?:</p><figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm1</span>.<span class="title">Button1Click</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  ShowMessage (<span class="string">'Hola Mundo'</span>);</span><br><span class="line"><span class="keyword">end</span>;   </span><br></pre></td></tr></table></figure><p>Pues este es el código que recibe el evento OnClick de nuestro botón. Todo lo que está entre las palabras <code>begin</code> y <code>end;</code> se ejecutará cada vez que se pulse con el ratón sobre el botón.</p><p>Antes de seguir produndizando vamos a fijarnos en la ventana ‘Inspector de Objetos’. Recuerda que con la tecla <code>F11</code> puedes traerla al frente.</p> <center><img src="/imagenes/lazarus3-1.png" class="" title="Inspector de objetos"></center><p>Si te fijas en la parte superior, hay una estructura en árbol dónde figura el formulario <code>Form1:Tform</code> y de este depende <code>Button1:TButton</code></p> <center><img src="/imagenes/lazarus3-2.png" class="" title="Lista de objetos"></center><p>Esto nos quiere indicar que tenemos un formulario (que también es un control) y dentro de él hay un botón llamado Button1. Si seleccionamos cualquiera de los de los elementos la parte inferior de la ventana nos mostrará las propiedades y eventos de este control. Así que selecciona  <code>Button1</code> y vamos a su propiedad <code>Caption</code> dónde podrás introducir un texto, el cual será el que aparezca en el botón. Por ejemplo introduce: <code>Púlsame</code>.</p> <center><img src="/imagenes/lazarus3-3.png" class="" title="Propiedades"></center><p>También puedes ver los eventos del control, pulsando sobre la pestaña eventos. Al hacerlo verás que hay código escrito, pulsa dos veces dónde pone <code>Button1Click</code> y aparecerá el código que controla el evento <code>Onclick</code> de este control.</p> <center><img src="/imagenes/lazarus3-4.png" class="" title="Codigo OnClick"></center><p>Fíjate como está declarado el evento. Pone: <code>TForm1.Button1Click</code>, esto nos indica que el control está dentro del formulario <code>Form1</code>, se llama <code>Button1</code> y su evento es <code>Click</code>.</p><p>La verdad es que el nombre <code>Button1</code> no es muy significativo, cuando tienes muchos controles, o incluso tan solo unos pocos, saber o indentificar lo que hace cada uno de ellos, puede ser algo lioso. Por eso una buena práctica es poner un nombre a cada control, que nos indique o nos dé una referencia de cual es su función en nuestra aplicación.</p><p>Para ello vamos a darle el nombre <code>Pulsame</code> a nuestro botón. Ve a las propiedades del botón y busca una propiedad que se llama <code>Name</code>, escribe el nombre del control y pulsa enter.</p> <center><img src="/imagenes/lazarus3-5.png" class="" title="Codigo OnClick"></center><p>Ahora ve al código y verás que el nombre del evento ha cambiado, y ya no aparece Button1.</p><figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm1</span>.<span class="title">PulsameClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  ShowMessage (<span class="string">'Hola Mundo'</span>);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure><p>Esto es todo por esta entrada, como ejercicio os dejo la tarea de cambiar el nombre del formulario por uno que os guste, y ver que ocurre con el código.</p><p>Hasta la próxima entrada.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Primeros-controles&quot;&gt;&lt;a href=&quot;#Primeros-controles&quot; class=&quot;headerlink&quot; title=&quot;Primeros controles&quot;&gt;&lt;/a&gt;Primeros controles&lt;/h2&gt;&lt;p&gt;En el &lt;a href=&quot;https://www.teisrobotics.org/2019/12/24/Ventanas-en-Lazarus/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;post anterior&lt;/a&gt; habíamos colocado un botón en nuestro formulario, y al pulsarlo “mágicamente” aparecía un mensaje en la pantalla.&lt;/p&gt;
+&lt;p&gt;Al colocar el botón u otro control en nuestro formulario veremos que este tiene una serie de propiedades y eventos.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Guias" scheme="https://teisrobotics.github.io/categories/Guias/"/>
+    
+    
+      <category term="lazarus" scheme="https://teisrobotics.github.io/tags/lazarus/"/>
+    
+      <category term="programacion" scheme="https://teisrobotics.github.io/tags/programacion/"/>
+    
+      <category term="pascal" scheme="https://teisrobotics.github.io/tags/pascal/"/>
+    
+  </entry>
   
   <entry>
     <title>Ventanas en Lazarus</title>
