@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>El control TEdit | TeisRobotics</title>
+  <meta name="author" content="Teis Robotics">
+  
+  <meta name="description" content="El control TEditHasta ahora hemos estado practicando con un botón. En esta entrada vamos a conocer el control TEdit, que nos permitirá introducir texto.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="El control TEdit"/>
+  <meta property="og:site_name" content="TeisRobotics"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="TeisRobotics" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-154454384-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">TeisRobotics</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="Todos los archivos.">
+			  <i class=""></i>Archivos
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="Todas las categorias.">
+			  <i class=""></i>Categorias
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="Todas las etiquetas.">
+			  <i class=""></i>Etiquetas
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="Sobre mi.">
+			  <i class=""></i>Sobre TeisRobotics
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> El control TEdit</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="El-control-TEdit"><a href="#El-control-TEdit" class="headerlink" title="El control TEdit"></a>El control TEdit</h2><p>Hasta ahora hemos estado practicando con un botón. En esta entrada vamos a conocer el control TEdit, que nos permitirá introducir texto.</p>
+ <center>
+<img src="/imagenes/lazarus4-1.png" class="" title="Aplicación con TEdit">
+</center>
+<a id="more"></a>
+
+<p>Lo primero es crear un nuevo proyecto del tipo <code>Aplicación</code> tal como hemos hecho en la <a href="https://www.teisrobotics.org/2019/12/24/Ventanas-en-Lazarus/" target="_blank" rel="noopener">entrada anterior</a>. Añádele un botón y el componente TEdit para que quede como la imagen anterior. El control <code>TEdit</code> lo encontrás en la pestaña <code>Standard</code>, la misma dónde esta el botón.</p>
+ <center>
+<img src="/imagenes/lazarus4-2.png" class="" title="TEdit">
+</center>
+
+<p>Ahora en el evento <code>OnClick</code> del botón escribe el siguiente código:</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm1</span>.<span class="title">Button1Click</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  ShowMessage (edit1.text);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Ejecuta ahora la aplicación y escribe algo dónde pone TEdit, y después pulsa el botón. Verás que aparece el un mensaje el texto que has escrito.</p>
+ <center>
+<img src="/imagenes/lazarus4-3.png" class="" title="Probando">
+</center>
+
+<p>Lo que ocurre es que al pulsar el botón se muestra el texto del control TEdit. Esto se hace accediendo a su propiedad <code>Text</code>. También podemos asignar un texto a esta propiedad, escribiendo lo siguiente:</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm1</span>.<span class="title">Button1Click</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  Edit1.Text := <span class="string">'Ahora el texto lo cambio yo'</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="El-evento-OnChange"><a href="#El-evento-OnChange" class="headerlink" title="El evento OnChange"></a>El evento OnChange</h2><p>El control TEdit, tiene una propiedad interesante, que nos permite saber cuando el texto que se muestra es cambiado. Por ejemplo escribe el siguiente código en el evento OnChange del control TEdit.</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm1</span>.<span class="title">Edit1Change</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  Edit1.Text := UpperCase (Edit1.Text);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Prueba tu aplicación y verás que todo lo que escribar siempre aparecerá en mayúsculas.</p>
+ <center>
+<img src="/imagenes/lazarus4-4.png" class="" title="Probando">
+</center>
+
+<p>Lo que hace este trozo de código es leer el contenido de la propiedad <code>Text</code> del control <code>Edit1</code> y convertirla en mayúsculas, y asignarle el resultado a la propiedad <code>Text</code> de si mismo. Este evento se ejecuta cada vez que se cambia el texto en el control.</p>
+<h2 id="El-evento-OnEditingDone"><a href="#El-evento-OnEditingDone" class="headerlink" title="El evento OnEditingDone"></a>El evento OnEditingDone</h2><p>Otra opción sería comprobar el texto que se ha introducido cuando el usuario haya terminado. Esto se puede hacer en el envento <code>OnEditingDone</code>, prueba el siguiente código.</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TForm1</span>.<span class="title">Edit1EditingDone</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    Edit1.Text := UpperCase (Edit1.Text);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Pero antes de ejecutar, borra el contenido de los otros eventos que hemos escritos.</p>
+<p>Hasta aquí una breve presentación del control <code>TEdit</code>. El cual es fundamental para introducir textos.</p>
+<p>Hasta la próxima entrada.</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Previo</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2019/12/28/primeroscontroles/" type="button" class="btn btn-default ">Siguiente<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comentarios</h2>
+
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2020-01-06 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/Guias/">Guias<span>5</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/lazarus/">lazarus<span>4</span></a></li> <li><a href="/tags/programacion/">programacion<span>5</span></a></li> <li><a href="/tags/pascal/">pascal<span>4</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">Contents</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#El-control-TEdit"><span class="toc-article-text">El control TEdit</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#El-evento-OnChange"><span class="toc-article-text">El evento OnChange</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#El-evento-OnEditingDone"><span class="toc-article-text">El evento OnEditingDone</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 Teis Robotics
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/" target="_blank" rel="noopener">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/" target="_blank" rel="noopener">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
