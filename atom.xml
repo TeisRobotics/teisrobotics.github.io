@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://teisrobotics.github.io/"/>
-  <updated>2020-01-06T14:18:31.611Z</updated>
+  <updated>2019-12-24T11:19:36.000Z</updated>
   <id>https://teisrobotics.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Empezando</title>
+    <link href="https://teisrobotics.github.io/2020/01/10/empezando/"/>
+    <id>https://teisrobotics.github.io/2020/01/10/empezando/</id>
+    <published>2020-01-10T19:57:39.639Z</published>
+    <updated>2019-12-24T11:19:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="TEISROBOTICS"><a href="#TEISROBOTICS" class="headerlink" title="TEISROBOTICS"></a>TEISROBOTICS</h2><center><!-- ![](/wiki/imagenes/logo.png) --><img src="/imagenes/logo.png" class=""></center><ul><li><a href="https://www.youtube.com/playlist?list=PLA-c5i1JTR7_531PzKHpszD0CZuLQFwJP" target="_blank" rel="noopener">Aprendiendo markdown.</a> Lista de reproducción de youtube para aprender Markdown.</li><li><a href="https://ultibo.org" target="_blank" rel="noopener">Ultibo.</a> Página oficial de Ultibo.</li><li><a href="http://www.lazarus-ide.org/" target="_blank" rel="noopener">Lazarus.</a> Entorno de desarrollo en Free Pascal.</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;TEISROBOTICS&quot;&gt;&lt;a href=&quot;#TEISROBOTICS&quot; class=&quot;headerlink&quot; title=&quot;TEISROBOTICS&quot;&gt;&lt;/a&gt;TEISROBOTICS&lt;/h2&gt;&lt;center&gt;
+
+&lt;!-- ![](/wiki/imagenes
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>El control TEdit</title>
@@ -161,30 +185,6 @@ BBC Micro:bit es una pequeña placa programable diseñada para hacer facil y div
       <category term="programacion" scheme="https://teisrobotics.github.io/tags/programacion/"/>
     
       <category term="pascal" scheme="https://teisrobotics.github.io/tags/pascal/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Empezando</title>
-    <link href="https://teisrobotics.github.io/2019/12/13/empezando/"/>
-    <id>https://teisrobotics.github.io/2019/12/13/empezando/</id>
-    <published>2019-12-13T17:42:28.341Z</published>
-    <updated>2019-12-24T11:19:36.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="TEISROBOTICS"><a href="#TEISROBOTICS" class="headerlink" title="TEISROBOTICS"></a>TEISROBOTICS</h2><center><!-- ![](/wiki/imagenes/logo.png) --><img src="/imagenes/logo.png" class=""></center><ul><li><a href="https://www.youtube.com/playlist?list=PLA-c5i1JTR7_531PzKHpszD0CZuLQFwJP" target="_blank" rel="noopener">Aprendiendo markdown.</a> Lista de reproducción de youtube para aprender Markdown.</li><li><a href="https://ultibo.org" target="_blank" rel="noopener">Ultibo.</a> Página oficial de Ultibo.</li><li><a href="http://www.lazarus-ide.org/" target="_blank" rel="noopener">Lazarus.</a> Entorno de desarrollo en Free Pascal.</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;TEISROBOTICS&quot;&gt;&lt;a href=&quot;#TEISROBOTICS&quot; class=&quot;headerlink&quot; title=&quot;TEISROBOTICS&quot;&gt;&lt;/a&gt;TEISROBOTICS&lt;/h2&gt;&lt;center&gt;
-
-&lt;!-- ![](/wiki/imagenes
-      
-    
-    </summary>
-    
-    
     
   </entry>
   
