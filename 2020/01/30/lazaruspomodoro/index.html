@@ -1,0 +1,443 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Lazarus. Cronómetro Pomodoro | TeisRobotics</title>
+  <meta name="author" content="Teis Robotics">
+  
+  <meta name="description" content="Lazarus: Cronómetro Pomodoro 
+
+
+
+En esta entrada vamos a hacer una aplicación que nos sirva como cronómetro pomodoro. ¿Pero qué es un cronómetro pomodoro?. Según la wikipedia, su definición es:
+
+
+La Técnica Pomodoro es un método para mejorar la administración del tiempo dedicado a una actividad. Fue desarrollado por Francesco Cirillo a fines de la década de 1980.1​ Se usa un temporizador para dividir el tiempo en intervalos indivisibles, llamados pomodoros, de 25 minutos de actividad, seguidos de 5 minutos de descanso, con pausas más largas cada cuatro pomodoros.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Lazarus. Cronómetro Pomodoro"/>
+  <meta property="og:site_name" content="TeisRobotics"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="TeisRobotics" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-154454384-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">TeisRobotics</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="Todos los archivos.">
+			  <i class=""></i>Archivos
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="Todas las categorias.">
+			  <i class=""></i>Categorias
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="Todas las etiquetas.">
+			  <i class=""></i>Etiquetas
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="Sobre mi.">
+			  <i class=""></i>Sobre TeisRobotics
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Lazarus. Cronómetro Pomodoro</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="Lazarus-Cronometro-Pomodoro"><a href="#Lazarus-Cronometro-Pomodoro" class="headerlink" title="Lazarus: Cronómetro Pomodoro"></a>Lazarus: Cronómetro Pomodoro</h2> <center>
+<img src="/imagenes/Pomodor.png" class="" title="Aplicación">
+</center>
+
+<p>En esta entrada vamos a hacer una aplicación que nos sirva como cronómetro pomodoro. ¿Pero qué es un cronómetro pomodoro?. Según la wikipedia, <a href="https://es.wikipedia.org/wiki/T%C3%A9cnica_Pomodor" target="_blank" rel="noopener">su definición es</a>:</p>
+<blockquote>
+<blockquote>
+<p>La Técnica Pomodoro es un método para mejorar la administración del tiempo dedicado a una actividad. Fue desarrollado por Francesco Cirillo a fines de la década de 1980.1​ Se usa un temporizador para dividir el tiempo en intervalos indivisibles, llamados pomodoros, de 25 minutos de actividad, seguidos de 5 minutos de descanso, con pausas más largas cada cuatro pomodoros.</p>
+</blockquote>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="Planteando-el-problema-logico"><a href="#Planteando-el-problema-logico" class="headerlink" title="Planteando el problema lógico"></a>Planteando el problema lógico</h3><p>Nuestra aplicación funcionará de la siguiente manera.</p>
+<ul>
+<li>EL botón iniciará y parará el cronómetro</li>
+<li>Al iniciar el cronómetro este contará 25 minutos. E indicará que está en modo Concentración</li>
+<li>Al pasar los 25 minutos, el cronómetro volverá a empezar a contar desde 0 hasta 5. E indicará que está en el modo Descanso.</li>
+<li>Al terminar el modo Descanso el cronómetro se parará.</li>
+</ul>
+<h3 id="Preparando-los-componentes"><a href="#Preparando-los-componentes" class="headerlink" title="Preparando los componentes"></a>Preparando los componentes</h3><p>Para realizar esta aplicación vamos a necesitar un formulario, dos botones, un etiqueta o <code>TLabel</code> y un cronómetro o <code>TTimer</code>.</p>
+<p>Empieza una nueva aplicación, modifica las propiedades siguientes:</p>
+<center>
+
+<table>
+<thead>
+<tr>
+<th>Propiedad</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BorderIcon</td>
+<td>biMaximize = FALSE</td>
+</tr>
+<tr>
+<td>BorderStyle</td>
+<td>bsSingle</td>
+</tr>
+<tr>
+<td>Caption</td>
+<td>Cronómetro pomodoro</td>
+</tr>
+<tr>
+<td>Position</td>
+<td>poDesktopCenter</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Mainfrm</td>
+</tr>
+</tbody></table>
+</center>
+
+<p>La propiedad <code>BorderIcon</code>, tiene varias opciones dentro ella. Al desplegarla verás varias posibilidades. Al poner <code>biMaximize</code> a false conseguimos que el botón para maximizar la ventana desaparezca, por lo cual ya no se puede ampliar su tamaño.</p>
+<p>La propiedad <code>BorderStyle</code>, indica el tipo de borde que queremos. Al poner el valor <code>bsSingle</code>,conseguimos que el borde sea sencillo o único, por lo cual no se puede cambiar el tamaño de la ventana.</p>
+<p>Con la propiedad <code>Position</code>, indicamos dónde aparece la ventana, en esta caso <code>poDesktopCenter</code> indica que se muestre en el centro del escritorio.</p>
+<p>Ahora coloca un componenten <code>TLabel</code>, lo encontrarás en la pestaña estándar.</p>
+<p>Ajusta sus propiedades según la tabla siguiente:</p>
+<center>
+
+<table>
+<thead>
+<tr>
+<th>Propiedad</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Align</td>
+<td>alTop</td>
+</tr>
+<tr>
+<td>Alignment</td>
+<td>taCenter</td>
+</tr>
+<tr>
+<td>Caption</td>
+<td>00:00</td>
+</tr>
+<tr>
+<td>Font</td>
+<td>Size = 45</td>
+</tr>
+<tr>
+<td>Position</td>
+<td>poDesktopCenter</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>lbTime</td>
+</tr>
+</tbody></table>
+</center>
+
+<p>Ahora coloca un botón, y ajusta sus propiedades.</p>
+<center>
+
+<table>
+<thead>
+<tr>
+<th>Propiedad</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Caption</td>
+<td>Iniciar</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>btControl</td>
+</tr>
+</tbody></table>
+</center>
+
+<p>Ahora coloca un control <code>TTimer</code>. Lo encontrarás en la pestaña <code>System</code>.</p>
+ <center>
+<img src="/imagenes/lazarus6-1.png" class="" title="Ttimer">
+</center>
+
+<p>Este control nos permite que cada cierto tiempo se produzca un evento. Su propiedad <code>Interval</code> indica, en milisegundos, cada cuento tiempo se produce el evento. Su propiedad <code>Enabled</code> nos permite activar y desactivar su funcionamiento.</p>
+<p>Pon su propiedad <code>Enabled</code> a False. El resto déjalo como está.</p>
+<p>Tu aplicación debería tener este aspecto.</p>
+ <center>
+<img src="/imagenes/lazarus6-2.png" class="" title="Aplicación">
+</center>
+
+<h3 id="Escribiendo-el-codigo-fuente"><a href="#Escribiendo-el-codigo-fuente" class="headerlink" title="Escribiendo el código fuente"></a>Escribiendo el código fuente</h3><p>Ahora que tenemos todos los controles listos, y el planteamiento lógico de nuestra aplicación,vamos a escribir el código fuente.</p>
+<p>Empezamos por evento <code>OnClick</code>  de botón. Aquí vamos activar y desactivar el cronómetro. Para ello lo se hace es cambiar su propiedad <code>Enabled</code>.</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TMainFrm</span>.<span class="title">btControlClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  Timer1.Enabled := <span class="keyword">not</span> Timer1.Enabled;</span><br><span class="line"><span class="keyword">end</span>;  </span><br></pre></td></tr></table></figure>
+
+<p>Como nuestro cronómetro debe conocer en que modo está, vamos a crear una variable que lo indique. Pero esta variable debe estar disponible para su consulta o modificación desde cualquier parte de nuestro código. Para ello vamos a definir la variable al principio del código. En la sección dónde private.</p>
+<p>Además para saber el tiempo que lleva transcurrido debemos anotar la hora a la que se iniciar el cronómetro. Esta también será una variable que debe estar disponible para todo nuestro código.</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span></span><br><span class="line">    Tiempo: TTime; <span class="comment">//Almacena el número de segundos</span></span><br><span class="line">    ModoDescanso: boolean; <span class="comment">//Almacena el estado</span></span><br></pre></td></tr></table></figure>
+
+<p>Hemos definidos dos variables que son globales, eso significa que cualquier parte de nuestro código puede leer y modificar estas variables. </p>
+<p>La variable <code>Tiempo</code> almacenará la hora a la que se iniciar el cronómetro. Y la variable <code>ModoDescanso</code> indica se está en modoDescanso o no.</p>
+<p>Ahora vamos usar los eventos que tiene el componente TTimer.</p>
+<ul>
+<li><p><code>OnStartTimer</code>. Se produce cuando se inicia el cronómetro</p>
+</li>
+<li><p><code>OnStopTimer</code>. Se produce cuando se detiene el cronómetro.</p>
+</li>
+<li><p><code>OnTimer</code>. Se produce cada vez que pasa el tiempo programado en la propiedad <code>Interval</code>.</p>
+<center>
+<img src="/imagenes/lazarus6-3.png" class="" title="Eventos">
+</center>
+
+</li>
+</ul>
+<p>En el evento <code>OnStartTime</code> pondremos el código siguiente:</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TMainFrm</span>.<span class="title">Timer1StartTimer</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  lbTime.Caption := <span class="string">'00:00'</span>;</span><br><span class="line">  MainFrm.Caption := <span class="string">'Tiempo Concentración'</span>;</span><br><span class="line">  btControl.Caption := <span class="string">'Detener'</span>;</span><br><span class="line">  Tiempo := Time;</span><br><span class="line">  ModoDescanso := False;</span><br><span class="line"><span class="keyword">end</span>; </span><br></pre></td></tr></table></figure>
+
+<p>Fíjate que la variable <code>tiempo</code> es igualada a <code>Time</code>. <code>Time</code> es una función que devuelve la hora actual. Y la variable <code>ModoDescanso</code> la iniciamos a False.</p>
+<p>Ahora vamos a ver el código del evento <code>OnStopTimer</code>.</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TMainFrm</span>.<span class="title">Timer1StopTimer</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  lbTime.Caption := <span class="string">'00:00'</span>;</span><br><span class="line">  MainFrm.Caption := <span class="string">'Cronómetro pomodoro'</span>;</span><br><span class="line">  btControl.Caption := <span class="string">'Arrancar'</span></span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<p>En este parte, simplemente volvemos a poner todo como estaba al principio.</p>
+<p>Ahora vamos a ver el código fuente del evento <code>Ontimer</code>. Que se ejecuta cada segundo o lo que es lo mismo cada 1000 milisegundos.</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TMainFrm</span>.<span class="title">Timer1Timer</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">  Actual: TTime;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">  Actual := Time - Tiempo;</span><br><span class="line">  lbTime.Caption := FormatDateTime(<span class="string">'nn:ss'</span>, actual);</span><br><span class="line">  <span class="keyword">if</span> (ModoDescanso = False) <span class="keyword">and</span> (MinutesBetween(Time, Tiempo) = <span class="number">25</span>) <span class="keyword">then</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    MainFrm.Caption := <span class="string">'Tiempo Descanso'</span>;</span><br><span class="line">    ModoDescanso := True;</span><br><span class="line">    Tiempo := Time;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line">  <span class="keyword">if</span> (ModoDescanso = True) <span class="keyword">and</span> (MinutesBetween(Time, Tiempo) = <span class="number">5</span>) <span class="keyword">then</span></span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">    Timer1.Enabled:= False;</span><br><span class="line">  <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Lo primero que se hacemos en calcular cuanto tiempo ha pasado, para ello restamos la hora actual (recuerda la función <code>time</code>) a la hora que se inicio el cronómetro. Y lo guardamos en la variable <code>Actual</code>. Esta variable esta definida al principio del evento. Por tanto solo se podrá usar en el evento. Es lo que se denomina una variable local.</p>
+<p>Como la hora no es un dato cadena o texto, que el tipo de dato que muestra la etiqueta <code>lblabel</code> lo convertimos en cadena, indicando que queremos que se muestren minutos y segundos. Esto lo hace la función <code>FormatDataTime</code>.</p>
+<p>El siguiente paso es comprobar en que modo está. Eso lo hacemos con la instrucción <code>IF</code>.  Además debemos saber cuantos minutos han pasado. El cálculo se hace con la función <code>MinutesBetween</code>. Para usar esta función debemos indicar a nuestro programa en que librería se encuentra, ya que no la incluye por defecto. Para ello en la parte superior hay un línea que empieza por la palabra reservada <code>uses</code>. Al final debes añadir la librería <code>dateutils</code>.</p>
+ <center>
+<img src="/imagenes/lazarus6-4.png" class="" title="Clausula uses">
+</center>
+
+<p>Ya está listo nuestra aplicación. Se pueden realizar muchas mejoras, desde estéticas hasta funcionales. Pero el funcionamiento básico esta listo. Modificar propiedades, código, etc para adapatarla a vuestro gusto y sobre todo explorar y aprender más.</p>
+<center>
+<img src="/imagenes/lazarus6-5.png" class="" title="Aplicación">
+</center>
+
+<p>El código fuente lo podeís descargar del github de TeisRobotics, desde <a href="https://github.com/TeisRobotics/Lazarus/tree/master/Blog/Pomodoro" target="_blank" rel="noopener">aquí</a>.</p>
+<p>Saludos</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Previo</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2020/01/10/empezando/" type="button" class="btn btn-default ">Siguiente<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comentarios</h2>
+
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2020-01-30 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/Guias/">Guias<span>6</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/lazarus/">lazarus<span>5</span></a></li> <li><a href="/tags/programacion/">programacion<span>6</span></a></li> <li><a href="/tags/pascal/">pascal<span>5</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">Contents</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Lazarus-Cronometro-Pomodoro"><span class="toc-article-text">Lazarus: Cronómetro Pomodoro</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Planteando-el-problema-logico"><span class="toc-article-text">Planteando el problema lógico</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Preparando-los-componentes"><span class="toc-article-text">Preparando los componentes</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Escribiendo-el-codigo-fuente"><span class="toc-article-text">Escribiendo el código fuente</span></a></li></ol></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 Teis Robotics
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/" target="_blank" rel="noopener">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/" target="_blank" rel="noopener">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
