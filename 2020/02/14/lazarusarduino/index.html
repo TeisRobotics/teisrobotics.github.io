@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Comunicando Lazarus con Arduino (1) | TeisRobotics</title>
+  <meta name="author" content="Teis Robotics">
+  
+  <meta name="description" content="Comunicando Lazarus con Arduino (1)Arduino es un plataforma de hardware libre, quizás la más conocida dentro del movimiento maker. En otras palabras es un pequeño microprocesador que registra entradas y salidas, entre otras funcionalidades.
+Además permite comunicarse con un PC por medio de su puerto serie.
+Lazarus dispone de la capacidad de gestionar puertos serie de una manera sencilla.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Comunicando Lazarus con Arduino (1)"/>
+  <meta property="og:site_name" content="TeisRobotics"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="TeisRobotics" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-154454384-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">TeisRobotics</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="Todos los archivos.">
+			  <i class=""></i>Archivos
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="Todas las categorias.">
+			  <i class=""></i>Categorias
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="Todas las etiquetas.">
+			  <i class=""></i>Etiquetas
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="Sobre mi.">
+			  <i class=""></i>Sobre TeisRobotics
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Comunicando Lazarus con Arduino (1)</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="Comunicando-Lazarus-con-Arduino-1"><a href="#Comunicando-Lazarus-con-Arduino-1" class="headerlink" title="Comunicando Lazarus con Arduino (1)"></a>Comunicando Lazarus con Arduino (1)</h2><p><a href="https://www.arduino.cc/" target="_blank" rel="noopener">Arduino</a> es un plataforma de hardware libre, quizás la más conocida dentro del movimiento maker. En otras palabras es un pequeño microprocesador que registra entradas y salidas, entre otras funcionalidades.</p>
+<p>Además permite comunicarse con un PC por medio de su puerto serie.</p>
+<p>Lazarus dispone de la capacidad de gestionar puertos serie de una manera sencilla.</p>
+<a id="more"></a>
+
+<h2 id="Preparando-el-entorno"><a href="#Preparando-el-entorno" class="headerlink" title="Preparando el entorno"></a>Preparando el entorno</h2><p>Para hacer uso del puerto serie en lazarus necesitamos añadir un libreria, o componente. Para ello desde el menú <code>Paquete</code> seleccionamos <code>Administrador de paquetes en línea</code>.</p>
+ <center>
+<img src="/imagenes/lazarus7-2.png" class="" title="Administrador paquetes">
+</center>
+
+<p>Por supuesto tienes que tener conexión a internet. En la ventana que se abre, buscamos <code>serial</code> para que filtre todos los componentes que se llamane así.</p>
+ <center>
+<img src="/imagenes/lazarus7-3.png" class="" title="Instalar serial">
+</center>
+
+<p>Pulsamos sobre instalar. Para que el componente esté disponible es necesario compilarlo e instalarlo. Para ello es necesario reconstruir lazarus.</p>
+ <center>
+<img src="/imagenes/lazarus7-5.png" class="" title="Instalar serial">
+</center>
+
+<p>Si todo fue bien, Lazarus se cerrará y se volverá a abrir. Y ya tendremos nuestro componente listo para usar. En este caso se instaló en la paleta <code>LazSerial</code>.</p>
+ <center>
+<img src="/imagenes/lazarus7-6.png" class="" title="LazSerial">
+</center>
+
+<h2 id="Creando-la-aplicacion"><a href="#Creando-la-aplicacion" class="headerlink" title="Creando la aplicación"></a>Creando la aplicación</h2><p>Para comunicar con nuestro arduino, vamos a poner una serie de componentes. Creamos una aplicación nueva. Añade un componente <code>TPanel</code>, y alínealo a la parte de arriba y borra el texto de su propiedad <code>Caption</code>.</p>
+<p>Añade dos botones sobre el componente <code>TPanel</code>. Uno será para conectar y otro para configurar el puerto serie.</p>
+<p>Añade un componente TMemo, pon su propiedad <code>ScrollBars</code> con el valor <code>ssAuthoBoth</code>  y alínealo al cliente.</p>
+<p>Y no te olvides de añadir el componente <code>LazSerial</code>. La aplicación debería quedar algo así:</p>
+ <center>
+<img src="/imagenes/lazarus7-7.png" class="" title="Aplicación LazSerial">
+</center>
+
+<p>La comunicación serie, se realiza por medio un puerto, y a una velocidad determinada. Esta información debe coincidir con el el nombre el puerto serie al que está conectado nuestro arduino y con la velocidad que hemos programado en nuestro arduino.</p>
+<p>Luis Llamas tiene en su blog un excelente <a href="https://www.luisllamas.es/arduino-puerto-serie/" target="_blank" rel="noopener">artículo</a> sobre la comunicación serie en arduino.</p>
+<p>Para indicar a nuestro componente <code>Lazserial</code> como se debe comunicar, usaremos el evento Onclick del botón de configurar. Cuando se ejecute este evento, ejecutaremos el siguiente código:</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TLazSerialFrm</span>.<span class="title">btConfigurarClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  LazSerial1.ShowSetupDialog;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Ahora en el evento <code>OnClick</code> del botón conectar escribiremos la orden de activación.</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TLazSerialFrm</span>.<span class="title">btConectarClick</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  LazSerial1.Active := True;</span><br><span class="line"><span class="keyword">end</span>;  </span><br></pre></td></tr></table></figure>
+
+<p>Bien ahora solo queda que cuando se reciban datos, escribirlos en el componente TMemo. Para ello usaremos el evento <code>RxData</code> del componente <code>LazSerial</code>.</p>
+<figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">TLazSerialFrm</span>.<span class="title">LazSerial1RxData</span><span class="params">(Sender: TObject)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  Memo1.Lines.Add(LazSerial1.ReadData);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>  
+
+<p>Antes de probar la aplicación, vamos a escribir un simple programa en un arduino.</p>
+<h2 id="Programando-Arduino"><a href="#Programando-Arduino" class="headerlink" title="Programando Arduino"></a>Programando Arduino</h2><p>Escribe este programa cárgalo en tu Arduino.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> led = <span class="number">13</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">Serial</span>.<span class="built_in">begin</span>(<span class="number">9600</span>);</span><br><span class="line">  <span class="built_in">pinMode</span> (led,<span class="literal">OUTPUT</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">digitalWrite</span> (led,<span class="literal">HIGH</span>);</span><br><span class="line">  <span class="built_in">Serial</span>.<span class="built_in">println</span> (<span class="string">"ON"</span>);</span><br><span class="line">  <span class="built_in">delay</span>(<span class="number">1500</span>);</span><br><span class="line">  <span class="built_in">digitalWrite</span>(led,<span class="literal">LOW</span>);</span><br><span class="line">  <span class="built_in">Serial</span>.<span class="built_in">println</span>(<span class="string">"OFF"</span>);</span><br><span class="line">  <span class="built_in">delay</span>(<span class="number">1500</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
+
+<p>Este simple programa enciende el LED del Pin 13, envía por el puerto serie la palabra <code>ON</code>, espera un segundo y medio, luego apaga el LED, envía por el puerto serie la palabra <code>OFF</code>, y espera un segundo y medio.</p>
+<h2 id="Probando-la-comunicacion"><a href="#Probando-la-comunicacion" class="headerlink" title="Probando la comunicación"></a>Probando la comunicación</h2><p>Ejecuta la aplicación que has creado en Lázarus, y pulsa sobre el botón configurar. Y selecciona el puerto serie y la velocidad. El puerto dependerá de tu PC, y la velocidad es 9600 baudios, ya que es la hemos configurado en el programa del Arduino.</p>
+ <center>
+<img src="/imagenes/lazarus7-8.png" class="" title="Aplicación LazSerial">
+</center>
+
+<p>Ahora pulsa conectar y empezaras a recibirlos la información que envía Arduino.</p>
+ <center>
+<img src="/imagenes/lazarus7-9.png" class="" title="Aplicación LazSerial">
+</center>
+
+<p>Con esto ya podemos recibir la información que envía Arduino por el puerto serie.</p>
+<p>En la próxima entrada veremos como enviar información a nuestra placa Arduino.</p>
+<p>Podeis descargar el código fuente, tanto de la aplicación de Lázarus, como la de arduino desde <a href="https://github.com/TeisRobotics/Lazarus/tree/master/Blog/lazarduino1" target="_blank" rel="noopener">aquí</a>.</p>
+<p>Saludos</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Previo</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2020/01/30/lazaruspomodoro/" type="button" class="btn btn-default ">Siguiente<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comentarios</h2>
+
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2020-02-14 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/Guias/">Guias<span>7</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/lazarus/">lazarus<span>6</span></a></li> <li><a href="/tags/programacion/">programacion<span>7</span></a></li> <li><a href="/tags/pascal/">pascal<span>6</span></a></li> <li><a href="/tags/arduino/">arduino<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">Contents</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Comunicando-Lazarus-con-Arduino-1"><span class="toc-article-text">Comunicando Lazarus con Arduino (1)</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Preparando-el-entorno"><span class="toc-article-text">Preparando el entorno</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Creando-la-aplicacion"><span class="toc-article-text">Creando la aplicación</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Programando-Arduino"><span class="toc-article-text">Programando Arduino</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Probando-la-comunicacion"><span class="toc-article-text">Probando la comunicación</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 Teis Robotics
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/" target="_blank" rel="noopener">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/" target="_blank" rel="noopener">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
